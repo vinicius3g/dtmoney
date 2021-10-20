@@ -5,6 +5,7 @@ import { Dashboard } from "./components/Dashboard";
 import { NewTransactionModal } from "./components/NewTransactionModal";
 
 import { GlobalStyle } from "./styles/global";
+import { TransactionsProvider } from "./hooks/useTransactions";
 
 export function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
@@ -19,7 +20,7 @@ export function App() {
   }
 
   return (
-    <>
+    <TransactionsProvider>
       <Header openOnNewTransactionModal={hanldeOpenNewTransactionModal} />
 
       <Dashboard />
@@ -28,8 +29,8 @@ export function App() {
         isOpen={isNewTransactionModalOpen}
         onRequestClose={hanldeCloseNewTransactionModal}
       />
-      
+
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 }
